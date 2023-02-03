@@ -1,0 +1,23 @@
+[
+    
+{
+    "category": "category",
+    "questions": [ {"ques":"q1", "options":["op1","op2","op3","op4"],"crctOpIndex":2 }]
+},
+
+{
+    "category": "category",
+    "questions": [ {"ques":"q1", "options":["op1","op2","op3","op4"],"crctOpIndex":2 }]
+},
+
+{
+    "category": "category",
+    "questions": [ {"ques":"q1", "options":["op1","op2","op3","op4"],"crctOpIndex":2 }]
+},
+
+{
+    "category": "category",
+    "questions": [ {"ques":"q1", "options":["op1","op2","op3","op4"],"crctOpIndex":2 }]
+}
+
+]
