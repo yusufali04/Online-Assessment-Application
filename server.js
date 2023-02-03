@@ -25,8 +25,59 @@ connection.once('open',(err) => {
 
 });
 
+/******** creating quizzes collection *****/
 
-/////////////// API's ////////////////
+const Schema = mongoose.Schema;
+
+const quizSchema = new Schema({
+    category: "",
+    questions: []
+});
+
+const quiz = mongoose.model('Quiz', quizSchema);
+
+
+/***************** API's ***********************/
+
+// API for sending questions
+
+app.get("/api/questions/:quizId", (req, res)=>{
+
+    quiz.findById(req.params.quizId, (err, result)=>{
+        res.json(result.questions)
+    })
+
+})
+
+// API for sending all quizzes
+
+app.get("/api/quizzes", (req, res)=>{
+
+    quiz.find({}, (err, result)=>{
+        res.json(result)
+    })
+
+})
+
+// API for sending particular quiz
+
+app.get("/api/quizzes/:quizId", (req, res)=>{
+
+    quiz.findById(req.params.quizId, (err, result)=>{
+        res.json(result)
+    })
+
+})
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -36,8 +87,3 @@ app.listen(3000, ()=>{
 })
 
 
-
-// {
-//     category: "common",
-//     questions: [ {ques:"q1", options:['op1','op2','op3','op4'],crctOpIndex:2 }, ...... ]
-// }
