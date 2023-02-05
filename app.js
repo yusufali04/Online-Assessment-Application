@@ -2,11 +2,30 @@
 
 let data = {
     quizId: '63de0966a849a7aede220c3f',
-    studentName:'Azgar',
+    studentName:'Fuck',
     correct:99,
     incorrect:1,
     totalMarks:99
 }
+
+axios.post('http://localhost:3000/api/result', data)
+    .then(res => {
+      console.log(res.data)
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // let data = {
 //     category: "HTML",
@@ -42,8 +61,3 @@ let data = {
 //   options: ["coding lang","programming lang","scripting lang","Markup lang"],
 //   crctOpIndex: 3
 // }
-
-axios.post('http://localhost:3000/api/result', data)
-    .then(res => {
-      console.log(res.data)
-})

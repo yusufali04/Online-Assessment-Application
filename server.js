@@ -155,7 +155,7 @@ app.post("/api/admin/quiz", (req, res)=>{
     })
 
     quiz.save()
-    res.end()
+    res.send('success')
 })
 
 
