@@ -1,0 +1,36 @@
+This is for Only Developers : A high-level overview of the REST API endpoints for a student, admin, and instructor in a quiz application: 
+
+Users: 
+
+POST /api/users: Create a new user (signup).                                                    [Pending]
+POST /api/users/login: Login an existing user.                                                  [Pending]
+PUT /api/users/:id: Update a specific user by ID.                                               [Pending]
+DELETE /api/users/:id: Delete a specific user by ID.                                            [Pending]
+
+Quizzes: 
+
+GET /api/quizzes: Retrieve the list of quizzes.                                                 [done]
+GET /api/quizzes/:id: Retrieve a specific quiz by ID.                                           [done]
+
+Questions: 
+
+GET /api/questions/:quizId: Retrieve the list of questions for a specific quiz by quiz ID.      [done]
+
+Results: 
+
+POST /api/results: Submit a student's quiz results.                                             [done]
+GET /api/results/:quizId: Retrieve the results for a specific quiz by quiz ID.                  [done]
+
+Admin: 
+
+POST /api/admin/quizzes: Create a new quiz.                                                     [done]
+PUT /api/admin/quizzes/:id: Update a specific quiz by ID.                                       [done]
+DELETE /api/admin/quizzes/:id: Delete a specific quiz by ID.                                    [done]
+POST /api/admin/questions: Create a new question.                                               [done]
+PUT /api/admin/questions/:id: Update a specific question by ID.                                 [done]
+DELETE /api/admin/questions/:id: Delete a specific question by ID.                              [done]
+
+Instructor: 
+
+GET /api/instructor/results: Retrieve the results for all quizzes.                              [done]
+GET /api/instructor/results/:quizId: Retrieve the results for a specific quiz by quiz ID.       [done]

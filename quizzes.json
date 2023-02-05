@@ -1,0 +1,54 @@
+[{
+  "category": "HTML",
+  "questions": [
+    {
+      "qid": 1,
+      "ques": "What is html",
+      "options": [
+        "coding lang",
+        "programming lang",
+        "scripting lang",
+        "Markup lang"
+      ],
+      "crctOpIndex": 3
+    },
+    {
+      "qid": 2,
+      "ques": "What is css",
+      "options": [
+        "coding lang",
+        "stylesheet",
+        "scripting lang",
+        "Markup lang"
+      ],
+      "crctOpIndex": 1
+    }
+  ]
+},
+{
+  "category": "Backend",
+  "questions": [
+    {
+      "qid": 1,
+      "ques": "What is server",
+      "options": [
+        "a computer",
+        "a monitor",
+        "a keyboard",
+        "none of above"
+      ],
+      "crctOpIndex": 1
+    },
+    {
+      "qid": 2,
+      "ques": "What is Cloud",
+      "options": [
+        "sky",
+        "servers",
+        "both a and b",
+        "none of above"
+      ],
+      "crctOpIndex": 2
+    }
+  ]
+}]
