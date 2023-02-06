@@ -2,10 +2,10 @@ This is for Only Developers : A high-level overview of the REST API endpoints fo
 
 Users: 
 
-POST /api/users: Create a new user (signup).                                                    [Pending]
-POST /api/users/login: Login an existing user.                                                  [Pending]
+POST /api/users: Create a new user (signup).                                                    [Done]
+POST /api/users/login: Login an existing user.                                                  [Done]
 PUT /api/users/:id: Update a specific user by ID.                                               [Pending]
-DELETE /api/users/:id: Delete a specific user by ID.                                            [Pending]
+DELETE /api/users/:id: Delete a specific user by ID.                                            [Done]
 
 Quizzes: 
 
@@ -34,3 +34,8 @@ Instructor:
 
 GET /api/instructor/results: Retrieve the results for all quizzes.                              [done]
 GET /api/instructor/results/:quizId: Retrieve the results for a specific quiz by quiz ID.       [done]
+
+
+sent quizid when created
+stored userId in results
+changed the response of all apis

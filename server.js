@@ -3,6 +3,7 @@ const app = express()
 const mongoose = require("mongoose");
 var cors = require('cors');
 const { json } = require("express");
+const bcrypt = require('bcrypt')
 
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
@@ -42,6 +43,7 @@ const Quiz = mongoose.model('Quiz', quizSchema);
 
 const resultsSchema = new Schema({
     quizId: String,
+    userId: String,
     studentName: String,
     correct: Number,
     incorrect: Number,
@@ -51,7 +53,16 @@ const resultsSchema = new Schema({
 const Result = mongoose.model('Result', resultsSchema);
 
 
+/******** creating users collection to store registered users *****/
 
+const usersSchema = new Schema({
+    username: {type: String, required: true},
+    email: {type: String, required: true},
+    password: {type: String, required: true},
+    role: {type: String, default: "student"}
+})
+
+const User = mongoose.model('user', usersSchema);
 
                                             /***************** API's ***********************/
 
@@ -113,6 +124,7 @@ app.post("/api/result", (req, res)=>{
     
     const result = new Result({
         quizId: body.quizId,
+        userId: body.userId,
         studentName: body.studentName,
         correct: body.correct,
         incorrect: body.incorrect,
@@ -120,7 +132,7 @@ app.post("/api/result", (req, res)=>{
     })
 
     result.save()
-    res.send('Results are successfully stored')
+    res.json({message: 'Results are successfully stored'})
 })
 
 
@@ -155,7 +167,7 @@ app.post("/api/admin/quiz", (req, res)=>{
     })
 
     quiz.save()
-    res.send('success')
+    res.send({message: 'success'})
 })
 
 
@@ -168,10 +180,10 @@ app.put("/api/admin/quizzes/:id", (req, res)=>{
     Quiz.findOneAndReplace({_id: req.params.id}, req.body, {upsert: true}, (err, doc)=>{
 
         if(err){
-            res.send(err)
+            res.send({err: err})
         }
         else{
-            res.send("quiz updated successfully")
+            res.send({message: "quiz updated successfully"})
         }
 
     })
@@ -189,10 +201,10 @@ app.delete("/api/admin/quizzes/:id", (req, res)=>{
     Quiz.findByIdAndRemove(req.params.id, (err, deletedDoc)=>{
 
         if(err){
-            res.send(err)
+            res.send({err: err})
         }
         else{
-            res.send("Deleted successfully")
+            res.send({message: "Deleted successfully"})
         }
 
     })
@@ -208,9 +220,9 @@ app.post("/api/admin/questions/:quizId", (req, res)=>{
     Quiz.findOneAndUpdate({_id: req.params.quizId },  { $push: { questions: req.body } }, (err)=>{
 
         if(err){
-            res.send(err)
+            res.send({err: err})
         } else{
-            res.send("Successfully added the question")
+            res.send({message: "Successfully added the question"})
         }
 
     })
@@ -234,9 +246,9 @@ app.put("/api/admin/questions/:quizId/:qid", (req, res)=>{
         (err, result)=>{
             
             if(err){
-                res.send(err)
+                res.send({err: err})
             } else{
-                res.send('Question updated successfully')
+                res.send({message: 'Question updated successfully'})
             }
         })
 
@@ -252,9 +264,9 @@ app.delete("/api/admin/questions/:quizId/:qid", (req, res)=>{
     Quiz.findOneAndUpdate({_id: req.params.quizId }, { $pull: {'questions': {'qid': parseInt(req.params.qid) } } }, {safe: true, multi:true}, (err, result)=>{
 
         if(err){
-            res.send(err)
+            res.send({err: err})
         } else{
-            res.send('Question deleted successfully')
+            res.send({message: 'Question deleted successfully'})
         }
 
     } )
@@ -262,7 +274,7 @@ app.delete("/api/admin/questions/:quizId/:qid", (req, res)=>{
 })
 
 
-                                            /*************** API's For Instructor ************/
+                                        /*************** API's For Instructor ************/
 
 
 // sending all the results of all quizzes
@@ -286,7 +298,7 @@ app.get("/api/instructor/results/:quizId", (req, res)=>{
 
     Result.find({ quizId: req.params.quizId }, (err, result)=>{
         if(err){
-            res.send(err)
+            res.send({err: err})
         } else {
             res.json(result)
         }
@@ -297,10 +309,102 @@ app.get("/api/instructor/results/:quizId", (req, res)=>{
 
 
 
+                                        /*************** API's For Login And Registration ************/
 
 
+// creating a user
+
+app.post('/api/user', async (req, res)=>{
+
+    const body = req.body
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+
+    User.findOne({email: body.email}, (err, result)=>{
+
+        if(err){
+            res.json({err: 'something went wrong, Please try again...'})
+        }
+        if(result){
+            res.json({err: 'Account with the given email already exists'})
+        }
+        else{
+
+            const user = new User({
+                username: body.username,
+                email: body.email,
+                password: hashedPassword,
+                role: body.role
+            })
+        
+            user.save().then((savedUser)=>{
+        
+                res.json({message: 'Registered Successfully', userId: savedUser._id})
+        
+            }).catch((err)=>{
+        
+                res.json({err: 'Account with the given email already exists'})
+                
+            })
+
+        }
+
+    })
+
+    
+
+})
+
+// logging in existing user
+
+app.post("/api/users/login", (req, res)=>{
+
+    const body = req.body;
+
+    User.findOne({ email: body.email }, (err, result)=>{
+
+        if(!result){
+
+            res.send({ authenticated: false, err: 'Account does not exists' })
+
+        }
+
+        bcrypt.compare(body.password, result.password).then((match)=>{
+
+            if(match){
+                res.send({authenticated: true, user: result.username, email: result.email, userId: result._id})
+            }
+            else{
+                res.send({authenticated: null, err: 'Username or password is incorrect'})
+            }
+
+        })
+
+    })
+
+})
 
 
+// Delete a specific user by user id
+
+app.delete('/api/users/:userId', (req, res)=>{
+
+    body = req.body;
+    
+    User.findOneAndDelete({_id: req.params.userId}, (err, result)=>{
+
+        if(result){
+            res.json({message: 'Deleted successfully'})
+        } 
+        else {
+            res.json({err: 'User does not exist'})
+        }
+        if(err){
+            res.json({err: err})
+        }
+
+    })
+
+})
 
 
 
