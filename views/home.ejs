@@ -1,0 +1,25 @@
+
+<section id="quizzes-section">
+
+    <div class="quiz-main-wrap">
+        
+        <% quizzes.forEach(quiz => {    %> 
+
+            <div class="quiz" id="<%= quiz._id %> ">
+
+                <h4> <%= quiz.title %> </h4>
+                <div class="p-div">
+                    <p> <%= quiz.description %>  </p>
+                </div>
+                <div class="toughness">
+                    <p> <%= quiz.toughness %> </p>
+                </div>
+                <a href="/quizzes/<%= quiz._id %>"><button>Start Quiz</button></a>
+
+            </div>
+            
+        <% }); %> 
+
+    </div>
+
+</section>

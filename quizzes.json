@@ -1,5 +1,7 @@
 [{
-  "category": "HTML",
+  "title": "Basic HTML Quiz",
+  "description": "Contains HTML related questions",
+  "toughness": "Medium",
   "questions": [
     {
       "qid": 1,
@@ -26,7 +28,9 @@
   ]
 },
 {
-  "category": "Backend",
+  "title": "Basic Backend Technologies",
+  "description": "Questions on the basic backend technologies",
+  "toughness": "Easy",
   "questions": [
     {
       "qid": 1,
@@ -51,4 +55,37 @@
       "crctOpIndex": 2
     }
   ]
-}]
+},
+
+{
+  "title": "Advanced Javascript Questions",
+  "description": "This quiz contains the advanced javascript questions",
+  "toughness": "Hard",
+  "questions": [
+    {
+      "qid": 1,
+      "ques": "What is server",
+      "options": [
+        "a computer",
+        "a monitor",
+        "a keyboard",
+        "none of above"
+      ],
+      "crctOpIndex": 1
+    },
+    {
+      "qid": 2,
+      "ques": "What is Cloud",
+      "options": [
+        "sky",
+        "servers",
+        "both a and b",
+        "none of above"
+      ],
+      "crctOpIndex": 2
+    }
+  ]
+}
+
+
+]
