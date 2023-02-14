@@ -1,21 +1,35 @@
 <section class="quiz-section">
-    
+
+    <form id="form">
     <div>
 
-        <% questions.forEach(question=>{    %> 
+        <input id="currentQuiz" type="hidden" value="<%= JSON.stringify(quiz) %>">
+        
+        <% quiz.questions.forEach(question=>{    %> 
 
             <h4>Q<%= question.qid %>. <%= question.ques %> </h4>
 
-            <% question.options.forEach(option=>{   %> 
+            <% for(let i=0; i<question.options.length; i++) {  %> 
 
                 
-                <p> <input type="checkbox" name="option" id=""> <%= option %> </p>
 
-            <% }) %> 
+                    <div class="option-div">
+
+                        <input class="radio-btn radio" type="radio" name="<%= question.id %>" id="<%= question.id %><%= i %>">
+
+                        <label for="<%= question.id %><%= i %>"><%= question.options[i] %></label> <br>
+    
+                    </div>
+
+                
+                
+                
+            <% } %> 
 
         <% }) %> 
         
-
+                 
     </div>
-
+    <button id="submit-btn">Submit</button>
+    </form>  
 </section>

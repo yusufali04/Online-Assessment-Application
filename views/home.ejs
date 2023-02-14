@@ -14,7 +14,9 @@
                 <div class="toughness">
                     <p> <%= quiz.toughness %> </p>
                 </div>
-                <a href="/quizzes/<%= quiz._id %>"><button>Start Quiz</button></a>
+
+                <input type="hidden" value="<%= JSON.stringify(quiz.questions) %>" id="selected-quiz-questions">
+                <a href="/quizzes/<%= quiz._id %>"><button id="quiz-btn-home" onclick="selectedQuiz('<%= JSON.stringify(quiz.questions) %>')">Start Quiz</button></a>
 
             </div>
             

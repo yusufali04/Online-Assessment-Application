@@ -105,3 +105,26 @@ body{
 .toughness p{
     font-size: 0.8rem;
 }
+
+
+/* Quiz page */
+
+.quiz-section{
+    width: 80%;
+    margin: auto;
+    text-align: left;
+}
+
+.quiz-section h4{
+    margin: 1.3rem 0;
+}
+
+.radio-btn{
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle
+}
+
+.option-div{
+    margin: 0.8rem 0;
+}
