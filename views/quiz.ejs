@@ -1,35 +1,62 @@
 <section class="quiz-section">
 
-    <form id="form">
-    <div>
+    <div id="quiz-wrapper">
 
-        <input id="currentQuiz" type="hidden" value="<%= JSON.stringify(quiz) %>">
+        <h3 class="counter-h1">Time Remaining: <span id="counter"></span></h3>
+        <div>
+
+            <input id="currentQuiz" type="hidden" value="<%= JSON.stringify(quiz) %>">
+            
+            <% quiz.questions.forEach(question=>{    %> 
+
+                <h4>Q<%= question.qid %>. <%= question.ques %></h4>
+
+                <% for(let i=0; i<question.options.length; i++) {  %> 
+
+                    
+
+                        <div class="option-div">
+
+                            <input class="radio-btn radio" type="radio" name="<%= question.qid %>" id="<%= question.qid %><%= i %>">
+
+                            <label for="<%= question.qid %><%= i %>"><%= question.options[i] %></label> <br>
         
-        <% quiz.questions.forEach(question=>{    %> 
+                        </div>
 
-            <h4>Q<%= question.qid %>. <%= question.ques %> </h4>
+                    
+                    
+                    
+                <% } %> 
 
-            <% for(let i=0; i<question.options.length; i++) {  %> 
+            <% }) %> 
+            
+                    
+        </div>
+        <button id="submit-btn">Submit</button>
 
-                
-
-                    <div class="option-div">
-
-                        <input class="radio-btn radio" type="radio" name="<%= question.id %>" id="<%= question.id %><%= i %>">
-
-                        <label for="<%= question.id %><%= i %>"><%= question.options[i] %></label> <br>
-    
-                    </div>
-
-                
-                
-                
-            <% } %> 
-
-        <% }) %> 
-        
-                 
     </div>
-    <button id="submit-btn">Submit</button>
-    </form>  
+
+    <div id="timeOutWarningOverlay">
+
+        <div class="expire-wrapper">
+
+            <h2>Your results are submitted successfully</h2>
+            <div class="expire-btns">
+                <a href="/"><button>Home</button></a>
+                <a onclick="location.reload()"><button>Restart</button></a>
+            </div>
+            
+
+        </div>
+        
+
+    </div>
+    
+    
 </section>
+
+
+
+    <input type="text" id="userId" value="<%= user._id %>">
+    <input type="text" id="quizId" value="<%= quiz._id %>">
+    <input type="text" id="studentName" value="<%= user.username %>">

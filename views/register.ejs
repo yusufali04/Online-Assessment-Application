@@ -1,0 +1,33 @@
+<section class="log-reg-section">
+
+    <div class="log-reg-wrapper">
+
+        <h2>Register</h2>
+        
+        <form action="/api/user" method="post">
+
+            <input name="username" type="text" placeholder="Your Name" required> <br>
+            <input name="email" type="email" placeholder="Email" required> <br>
+            <input name="password" type="password" placeholder="Password" required> <br>
+
+            <% if(messages.regError){ %>
+
+                <div style="width: 100%; text-align: left; font-size: 0.9rem; color: red;">
+                    <span class="register-error"><em>* <%= messages.regError %></em></span>
+                </div>
+    
+            <% } %>
+
+            <div class="reg-btn-div">
+                <button type="submit">Sign Up</button>
+            </div>
+            
+            <div style="width: 100%; text-align: left; font-size: 0.9rem; margin-top: 1rem;" >
+                <a href="/login">Already have an account?</a>
+            </div>
+
+        </form>
+        
+    </div>
+
+</section>

@@ -1,6 +1,6 @@
 
 <section id="quizzes-section">
-
+    
     <div class="quiz-main-wrap">
         
         <% quizzes.forEach(quiz => {    %> 
@@ -14,10 +14,9 @@
                 <div class="toughness">
                     <p> <%= quiz.toughness %> </p>
                 </div>
-
-                <input type="hidden" value="<%= JSON.stringify(quiz.questions) %>" id="selected-quiz-questions">
-                <a href="/quizzes/<%= quiz._id %>"><button id="quiz-btn-home" onclick="selectedQuiz('<%= JSON.stringify(quiz.questions) %>')">Start Quiz</button></a>
-
+                
+                <a href="/quizzes/<%= quiz._id %>"><button id="quiz-btn-home">Start Quiz</button></a>
+                <!-- <a href="/instructor/results/<%= quiz._id %>">View Results</a> -->
             </div>
             
         <% }); %> 

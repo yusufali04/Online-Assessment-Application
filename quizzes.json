@@ -1,10 +1,10 @@
-[{
+[
+{
   "title": "Basic HTML Quiz",
   "description": "Contains HTML related questions",
   "toughness": "Medium",
   "questions": [
     {
-      "id": "5bmc7apwle2ujy2m",
       "qid": 1,
       "ques": "What is html",
       "options": [
@@ -16,7 +16,6 @@
       "crctOpIndex": 3          
     },
     {
-      "id": "5bmc79tkle2um7uj",
       "qid": 2,
       "ques": "What is css",
       "options": [
@@ -35,7 +34,6 @@
   "toughness": "Easy",
   "questions": [
     {
-      "id": "5bmc7d1ole2umtpq",
       "qid": 1,
       "ques": "What is server",
       "options": [
@@ -47,7 +45,6 @@
       "crctOpIndex": 1
     },
     {
-      "id": "5bmc77zsle2un92c",
       "qid": 2,
       "ques": "What is Cloud",
       "options": [
@@ -67,7 +64,6 @@
   "toughness": "Hard",
   "questions": [
     {
-      "id": "5bmc78k8le2unh0l",
       "qid": 1,
       "ques": "What is server",
       "options": [
@@ -79,7 +75,6 @@
       "crctOpIndex": 1
     },
     {
-      "id": "5bmc7bjsle2uo1g3",
       "qid": 2,
       "ques": "What is Cloud",
       "options": [
@@ -91,7 +86,56 @@
       "crctOpIndex": 2
     }
   ]
+},
+{
+  "title": "Basic Backend Technologies",
+  "description": "Questions on the basic backend technologies",
+  "toughness": "Easy",
+  "questions": [
+  {
+  "qid": 1,
+  "ques": "What is an API?",
+  "options": [
+  "a programming language",
+  "a communication protocol",
+  "a database management system",
+  "none of the above"
+  ],
+  "crctOpIndex": 1
+  },
+  {
+  "qid": 2,
+  "ques": "What is the purpose of a database in web development?",
+  "options": [
+  "to store and organize data",
+  "to display web pages",
+  "to handle user input",
+  "none of the above"
+  ],
+  "crctOpIndex": 0
+  },
+  {
+  "qid": 3,
+  "ques": "What is the difference between GET and POST methods in HTTP?",
+  "options": [
+  "GET is used for sending data to the server, while POST is used for retrieving data from the server",
+  "GET is used for retrieving data from the server, while POST is used for sending data to the server",
+  "GET and POST are interchangeable and can be used interchangeably",
+  "none of the above"
+  ],
+  "crctOpIndex": 1
+  },
+  {
+  "qid": 4,
+  "ques": "What is the difference between SQL and NoSQL databases?",
+  "options": [
+  "SQL databases are relational, while NoSQL databases are non-relational",
+  "SQL databases are non-relational, while NoSQL databases are relational",
+  "SQL and NoSQL databases are the same thing",
+  "none of the above"
+  ],
+  "crctOpIndex": 0
+  }
+  ]
 }
-
-
 ]
